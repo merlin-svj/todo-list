@@ -56,7 +56,7 @@
     <div class="todo-container">
         <div class="d-flex justify-content-between align-items-center mb-3">
             <h1>My To Do List</h1>
-            <a href="/logout" class="btn btn-outline-secondary logout-btn">Logout</a>
+            <a href="https://todo-listwebsite-1.onrender.com/logout" class="btn btn-outline-secondary logout-btn">Logout</a>
         </div>
         <table class="table table-hover align-middle">
             <thead class="table-light">
@@ -74,7 +74,7 @@
                         <span class="badge bg-primary priority-badge">{{ tododict[id]['priority'] }}</span>
                     </td>
                     <td>
-                        <a href="/delete/{{id}}" class="btn btn-danger btn-sm rounded-circle" title="Delete Task">
+                        <a href="https://todo-listwebsite-1.onrender.com/delete/{{id}}" class="btn btn-danger btn-sm rounded-circle" title="Delete Task">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                               <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5.5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6zm3 .5a.5.5 0 0 1 .5-.5.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6z"/>
                               <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1 0-2h3.5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1H14a1 1 0 0 1 1 1zm-1 1V4H2v9a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4h1.5z"/>
@@ -84,7 +84,7 @@
                 </tr>
                 {% endfor %}
                 <tr class="add-row">
-                    <form method="post" action="/add">
+                    <form method="post" action="https://todo-listwebsite-1.onrender.com/add">
                         <td>
                             <input type="text" name="newtodo" class="form-control" placeholder="Task Name" required>
                         </td>
