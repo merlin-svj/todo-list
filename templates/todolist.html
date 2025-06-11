@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TODO LIST</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background: #f8fafc;
+        }
+        .todo-container {
+            max-width: 700px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            padding: 32px 40px 24px 40px;
+        }
+        h1 {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 2.5rem;
+            margin-bottom: 24px;
+            text-align: center;
+            color: #0d6efd;
+        }
+        table {
+            margin: 0 auto 24px auto;
+            width: 100%;
+        }
+        th, td {
+            text-align: center;
+            font-size: 1.1rem;
+            vertical-align: middle;
+        }
+        .priority-badge {
+            font-size: 0.95rem;
+            margin-left: 8px;
+        }
+        .logout-btn {
+            float: right;
+        }
+        .add-row input {
+            width: 90%;
+        }
+        @media (max-width: 600px) {
+            .todo-container {
+                padding: 16px 4px;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="todo-container">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h1>My To Do List</h1>
+            <a href="/logout" class="btn btn-outline-secondary logout-btn">Logout</a>
+        </div>
+        <table class="table table-hover align-middle">
+            <thead class="table-light">
+                <tr>
+                    <th>Task</th>
+                    <th>Priority</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for id in tododict %}
+                <tr>
+                    <td>{{ tododict[id]['name'] }}</td>
+                    <td>
+                        <span class="badge bg-primary priority-badge">{{ tododict[id]['priority'] }}</span>
+                    </td>
+                    <td>
+                        <a href="/delete/{{id}}" class="btn btn-danger btn-sm rounded-circle" title="Delete Task">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                              <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5.5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6zm3 .5a.5.5 0 0 1 .5-.5.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6z"/>
+                              <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1 0-2h3.5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1H14a1 1 0 0 1 1 1zm-1 1V4H2v9a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4h1.5z"/>
+                            </svg>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+                <tr class="add-row">
+                    <form method="post" action="/add">
+                        <td>
+                            <input type="text" name="newtodo" class="form-control" placeholder="Task Name" required>
+                        </td>
+                        <td>
+                            <input type="number" name="priority" class="form-control" placeholder="Priority" min="1" required>
+                        </td>
+                        <td>
+                            <button type="submit" class="btn btn-success btn-sm">Add Task</button>
+                        </td>
+                    </form>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
