@@ -4,52 +4,125 @@
     <meta charset="UTF-8">
     <title>Register</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Roboto&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS for easy styling -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background: #f8fafc;
+            background: linear-gradient(135deg, #e0e7ff 0%, #f8fafc 100%);
+            min-height: 100vh;
+            font-family: 'Roboto', Arial, sans-serif;
         }
         .register-container {
             max-width: 400px;
             margin: 60px auto;
             background: #fff;
-            border-radius: 16px;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-            padding: 32px 32px 24px 32px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(13,110,253,0.10), 0 1.5px 6px rgba(0,0,0,0.04);
+            padding: 40px 36px 32px 36px;
         }
         h2 {
-            font-family: 'Courier New', Courier, monospace;
+            font-family: 'Montserrat', sans-serif;
             color: #0d6efd;
             text-align: center;
-            margin-bottom: 24px;
+            margin-bottom: 28px;
+            letter-spacing: 1px;
+        }
+        .form-control {
+            border-radius: 10px;
+            border: 1.5px solid #e0e7ff;
+            font-size: 1.05rem;
+            padding: 12px;
+        }
+        .form-control:focus {
+            border-color: #0d6efd;
+            box-shadow: 0 0 0 2px #e0e7ff;
+        }
+        .btn-primary {
+            background: linear-gradient(90deg, #0d6efd 60%, #4f8cff 100%);
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 12px 0;
+            transition: background 0.2s;
+        }
+        .btn-primary:hover {
+            background: linear-gradient(90deg, #2563eb 60%, #60a5fa 100%);
+        }
+        .text-link {
+            color: #0d6efd;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .text-link:hover {
+            color: #2563eb;
+            text-decoration: underline;
+        }
+        .logo {
+            display: block;
+            margin: 0 auto 18px auto;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #0d6efd 60%, #60a5fa 100%);
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(13,110,253,0.10);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo span {
+            color: #fff;
+            font-size: 2rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+            letter-spacing: 2px;
         }
     </style>
 </head>
 <body>
     <div class="register-container">
-        <h2>Register</h2>
+        <div class="logo">
+            <span>📝</span>
+        </div>
+        <h2>Create Account</h2>
         <form method="post" action="https://todo-listwebsite-1.onrender.com/register">
             <div class="mb-3">
-                <input type="text" class="form-control" name="username" placeholder="Username" required>
+                <input type="text" class="form-control" name="username" placeholder="Username" required autocomplete="off">
             </div>
             <div class="mb-3">
-                <input type="password" class="form-control" name="password" placeholder="Password" required>
+                <input type="password" class="form-control" name="password" placeholder="Password" required autocomplete="off">
             </div>
             <button type="submit" class="btn btn-primary w-100">Register</button>
         </form>
         <div class="mt-3 text-center">
-            <a href="https://todo-listwebsite-1.onrender.com/login">Already have an account? Login</a>
+            <a href="https://todo-listwebsite-1.onrender.com/login" class="text-link">Already have an account? Login</a>
         </div>
     </div>
     {% if error %}
     <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title text-danger" id="errorModalLabel">Registration Error</h5>
+        <div class="modal-content border-0" style="border-radius: 18px;">
+          <div class="modal-header" style="background: linear-gradient(90deg, #fee2e2 60%, #fca5a5 100%); border-top-left-radius: 18px; border-top-right-radius: 18px;">
+            <h5 class="modal-title text-danger d-flex align-items-center" id="errorModalLabel">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#dc2626" class="me-2" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16zm-1-13h2v6h-2V7zm0 8h2v2h-2v-2z"/></svg>
+              Registration Error
+            </h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body">
-            This username is already taken.
+          <div class="modal-body text-center" style="font-size: 1.08rem;">
+            <div class="mb-2 text-danger fw-bold">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#ef4444" class="mb-1" viewBox="0 0 24 24"><path d="M12 22c5.522 0 10-4.478 10-10S17.522 2 12 2 2 6.478 2 12s4.478 10 10 10zm0-18a8 8 0 1 1 0 16 8 8 0 0 1 0-16zm-1 5h2v4h-2V9zm0 6h2v2h-2v-2z"/></svg>
+            </div>
+            <div>
+              This username is already taken.<br>
+              <span class="text-muted">Try a different username or <a href="https://todo-listwebsite-1.onrender.com/login" class="text-link">login here</a> if you already have an account.</span>
+            </div>
+          </div>
+          <div class="modal-footer justify-content-center" style="border-bottom-left-radius: 18px; border-bottom-right-radius: 18px;">
+            <button type="button" class="btn btn-outline-danger px-4" data-bs-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
